@@ -6,15 +6,23 @@ import {useState} from "react";
  * @returns {JSX.Element}
  */
 export default function FeedbackSection() {
-    const [name, setName] = useState('')
-    const [hasErr, setHasErr] = useState(false)
-    const [reason, setReason] = useState('help')
+    const [form, setForm] = useState({
+        name: '',
+        hasErr: false,
+        reason: 'help'
+    })
     const changeName = (event) => {
-        setName(event.target.value)
-        setHasErr(event.target.value.trim().length === 0)
+        setForm(prev => ({
+            ...prev,
+            name: event.target.value,
+            hasErr: event.target.value.trim().length === 0
+        }))
     }
     const changeReason = (event) => {
-        setReason(event.target.value)
+        setForm(prev => ({
+            ...prev,
+            reason: event.target.value,
+        }))
     }
     return (
         <>
@@ -24,9 +32,9 @@ export default function FeedbackSection() {
                 <input type="text"
                        id="name"
                        className={'control'}
-                       value={name}
+                       value={form.name}
                        style={{
-                           border: hasErr ?'1px solid red' : null
+                           border: form.hasErr ?'1px solid red' : null
                        }}
                        onChange={changeName}
                 />
@@ -34,7 +42,7 @@ export default function FeedbackSection() {
                 <label htmlFor="reason">Причина обращения</label>
                 <select id="reason"
                         className={'control'}
-                        value={reason}
+                        value={form.reason}
                         onChange={changeReason}
                 >
                     <option value="error">Ошибка</option>
@@ -42,7 +50,7 @@ export default function FeedbackSection() {
                     <option value="suggest">Предложение</option>
                 </select>
 
-                <Button disabled={hasErr}>Отправить</Button>
+                <Button disabled={form.hasErr}>Отправить</Button>
             </form>
         </>
     )
