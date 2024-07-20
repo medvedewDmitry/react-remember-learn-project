@@ -1,9 +1,9 @@
 import './Button.scss'
 
-export default function Button({buttonId, children, onClick}) {
+export default function Button({buttonId, children, onClick, isActive}) {
     return <button
         id={`button-${buttonId}`}
-        className={'button'}
+        className={isActive ? 'button active' : 'button'}
         onClick={onClick}
     >
         {children}

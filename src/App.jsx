@@ -1,6 +1,7 @@
 import Header from "./components/Header.jsx";
-import {ways} from "./data.js";
+import {ways, differences} from "./data.js";
 import Button from "./components/Button/Button.jsx";
+import {useState} from "react";
 
 function WayToTeach({title, desc}) {
     return (
@@ -11,9 +12,10 @@ function WayToTeach({title, desc}) {
 }
 
 export default function App() {
-    const handleClick = (event) => {
-        const button = document.getElementById( event.target.id);
-        button.classList.toggle("active");
+    const [contentType, setContentType] = useState('way')
+    const handleClick = (type) => {
+        console.log("handleClick type", type)
+        setContentType(type)
     }
     return (
         <div>
@@ -35,11 +37,11 @@ export default function App() {
                 </section>
                 <section>
                     <h3>Новый блок с кнопками</h3>
-                    <Button buttonId={1}
-                            onClick={handleClick}
-                    >
-                        Важная кнопка
-                    </Button>
+                    <Button onClick={() => handleClick('way')} isActive={contentType === 'way'}>Подход</Button>
+                    <Button onClick={() => handleClick('easy')} isActive={contentType === 'easy'}>Доступность</Button>
+                    <Button onClick={() => handleClick('program')} isActive={contentType === 'program'}>Программа</Button>
+                    {!contentType && <p>Нажми на кнопку</p>}
+                    {contentType && <p>{differences[contentType]}</p>}
                 </section>
             </main>
         </div>
