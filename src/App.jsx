@@ -1,7 +1,6 @@
 /**
  * Корневой компонент приложения
  *
- *
  * Подключенные компоненты:
  * Header - шапка сайта
  * TeachingSection - секция с подходами обучения
@@ -11,7 +10,7 @@
 import {ways, differences} from "./data.js";
 import {Fragment, useState} from "react";
 // components
-import Header from "./components/Header.jsx";
+import Header from "./components/Header/Header.jsx";
 import TeachingSection from "./components/TeachingSection.jsx";
 import DifferencesSection from "./components/DifferencesSection.jsx";
 import HeadingFirstSection from "./components/HeadingFirstSection.jsx";
