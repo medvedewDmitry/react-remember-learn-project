@@ -1,4 +1,6 @@
-
+/**
+ * Секция с подходами в обучении
+ */
 import WayToTeach from "./WayToTeach.jsx";
 
 export default function TeachingSection({ways}) {

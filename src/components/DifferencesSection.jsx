@@ -1,3 +1,7 @@
+/**
+ * Секция с отличиями от других
+ */
+
 import Button from "./Button/Button.jsx";
 import {useState} from "react";
 

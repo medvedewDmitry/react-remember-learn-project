@@ -9,20 +9,21 @@
  */
 
 import {ways, differences} from "./data.js";
-
+import {Fragment} from "react";
 // components
 import Header from "./components/Header.jsx";
 import TeachingSection from "./components/TeachingSection.jsx";
 import DifferencesSection from "./components/DifferencesSection.jsx";
+import HeadingFirstSection from "./components/HeadingFirstSection.jsx";
 
 
 export default function App() {
-
-
     return (
-        <div>
+        <Fragment>
             <Header/>
             <main>
+                {/* Компонент секции с заголовком первого уровня */}
+                <HeadingFirstSection title={'Новый заголовок'}/>
                 {/* секция с подходами в обучении */}
                 <TeachingSection ways={ways}/>
 
@@ -31,7 +32,7 @@ export default function App() {
                     differences={differences}
                 />
             </main>
-        </div>
+        </Fragment>
     )
 }
 
