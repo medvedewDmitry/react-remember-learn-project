@@ -1,6 +1,12 @@
 import Button from "./Button/Button.jsx";
+import {useState} from "react";
 
-export default function DifferencesSection({differences, contentType, handleClick}) {
+export default function DifferencesSection({differences}) {
+    const [contentType, setContentType] = useState('way')
+    const handleClick = (type) => {
+        setContentType(type)
+    }
+
     return (
         <section>
             <h3>Чем мы отличаемся от других?</h3>

@@ -9,7 +9,6 @@
  */
 
 import {ways, differences} from "./data.js";
-import {useState} from "react";
 
 // components
 import Header from "./components/Header.jsx";
@@ -18,10 +17,8 @@ import DifferencesSection from "./components/DifferencesSection.jsx";
 
 
 export default function App() {
-    const [contentType, setContentType] = useState('way')
-    const handleClick = (type) => {
-        setContentType(type)
-    }
+
+
     return (
         <div>
             <Header/>
@@ -32,8 +29,6 @@ export default function App() {
                 {/* секция с отличиями от других */}
                 <DifferencesSection
                     differences={differences}
-                    contentType={contentType}
-                    handleClick={handleClick}
                 />
             </main>
         </div>
