@@ -2,6 +2,24 @@ import Button from "./Button/Button.jsx";
 import {useState} from "react";
 
 /**
+ * Компонент для демонстрации связывания значения с его рендрингом
+ * @returns {JSX.Element}
+ */
+function StateVsRef() {
+    const [value, setValue] = useState('');
+    const changeValue = (event) => {
+        setValue(event.target.value)
+    }
+
+    return (
+        <div>
+            <h3>Введенное значение: {value}</h3>
+            <input type="text" value={value} onChange={changeValue}/>
+        </div>
+    )
+}
+
+/**
  * Компонент страницы обратной связи
  * @returns {JSX.Element}
  */
@@ -34,7 +52,7 @@ export default function FeedbackSection() {
                        className={'control'}
                        value={form.name}
                        style={{
-                           border: form.hasErr ?'1px solid red' : null
+                           border: form.hasErr ? '1px solid red' : null
                        }}
                        onChange={changeName}
                 />
@@ -52,6 +70,8 @@ export default function FeedbackSection() {
 
                 <Button disabled={form.hasErr}>Отправить</Button>
             </form>
+            <hr/>
+            <StateVsRef/>
         </>
     )
 }
