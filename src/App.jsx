@@ -16,6 +16,7 @@ import DifferencesSection from "./components/DifferencesSection.jsx";
 import HeadingFirstSection from "./components/HeadingFirstSection.jsx";
 import TabSection from "./components/TabSection/TabSection.jsx";
 import FeedbackSection from "./components/FeedbackSection.jsx";
+import EffectsSection from "./components/EffectsSection.jsx";
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Fragment>
             <Header/>
             <main>
+                <div id="modal"></div>
                 <TabSection
                     selectedTab={tab}
                     changeTab={changeTab}
@@ -42,6 +44,11 @@ export default function App() {
                 {
                     tab === 'feedback' && <>
                         <FeedbackSection/>
+                    </>
+                }
+                {
+                    tab === 'effects' && <>
+                        <EffectsSection/>
                     </>
                 }
 
