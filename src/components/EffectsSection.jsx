@@ -1,6 +1,6 @@
 import Button from "./Button/Button.jsx";
 import Modal from "./Modal/Modal.jsx";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import WayToTeach from "./WayToTeach.jsx";
 
 export default function EffectsSection() {
@@ -8,17 +8,20 @@ export default function EffectsSection() {
     const [isLoading, setIsLoading] = useState(false)
     const [posts, setPosts] = useState([])
 
-    async function fetchPosts() {
+    const fetchPosts = useCallback(async () => {
+        // useCallback - позволяет закэшириовать ссылку на функцию
+        // используется для оптимизации
         setIsLoading(true)
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
         const posts = await response.json()
         setPosts(posts)
         setIsLoading(false)
-    }
+    }, [])
 
     useEffect(() => {
         fetchPosts()
-    }, [])
+    }, [fetchPosts])
+
     const toggleModal = () => {
         setIsShowModal(!isShowModal)
     }
